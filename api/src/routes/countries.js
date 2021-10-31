@@ -1,74 +1,84 @@
-// const server = require("express").Router();
-// const { Sequelize } = require('sequelize')
-// const { Country, Activities } = require("../db");
-// const axios = require('axios')
+const { Router } = require('express');
+const router = Router();
+const { Op } = require("sequelize");
+const { Country, Activities } = require('../db')
+const axios = require('axios')
 
-// const apiRresult = async () => {        // Creamos una funcion donde nos traeremos la informacion de la api.
-//     const { data } = await axios("https://restcountries.com/v3.1/all")      // Nos traemos solo la informacion que se encuentra en "Data".
 
-//     // console.log("ESTO ME TRAE LA API", data)
+//Carga Por hook
+router.use(async (req, res, next) => {
+    const countries = await Country.count();
+    if (!countries) {
+        const apiResult = await axios.get(
+            "https://restcountries.com/v3.1/all"
+        );
+        const array_country = apiResult.data.map((country) => ({
+            id3: country.cca3,
+            name: country.name.common,
+            flags: country.flags.svg,
+            continents: country.continents[0],
+            capital: country.capital?.length ? country.capital[0] : "No se encontro la capital",
+            subregion: country.subregion ? country.subregion : "No se encontro la subregion",
+            area: country.area,
+            population: country.population,
+        }));
+        await Country.bulkCreate(array_country).then(c => console.log('Done!')).catch(err => console.error(err))
+    }
+    next();
+});
 
-//     const apidata = await data.map(country => {     // Realizamos un mapeo a la informacion de data, para ir guardandola en nuestra DB.
-//         return {
-//             id3: country.cca3,
-//             name: country.name.common,
-//             flag: country.flags[0],
-//             continents: country.continents[0],
-//             capital: country.capital?.length ? country.capital[0] : "No se encontro la capital",
-//             subregion: country.subregion ? country.subregion : "No se encontro la subregion",
-//             area: country.area,
-//             population: country.population,
-//         }
-//     });
-//     const countries = await Country.bulkCreate(apidata)
-//     return countries;
-// }
+// Ruta principal
+router.get('/', async (req, res) => {
+    let countries;
+    let { name } = req.query;
 
-// const db = async () => {                // Creo una funcion donde me traigo los datos de mi DB incluyendo las actividades.
-//     return await Country.findAll({
-//         include: {
-//             model: Activities,
-//             attribute: ['name', 'difficulty', 'duration', 'season'],
-//             trough: {
-//                 attribute: []
-//             }
-//         }
-//     })
-// }
+    // buscar pais por nombre
+    if (name) {
+        name = name.split(" ").map(char => char.charAt(0).toUpperCase() + char.slice(1)).join(" ");
+        countries = await Country.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${name}%`,
+                },
+            },
+            include: { model: Activities, require: false }
+        });
+        return res.json(countries);
+    }
+    
+    // Todos los paises 
+    else {
+        let countries = await Country.findAll({
+            attributes: ["id3", "name", "flags", "population", "subregion"],
+            include: { model: Activities, required: false }
+        });
+        return res.json(countries)
+    }
+});
 
-// server.get('/', async (req, res, next) => {
-//     const { name } = req.query;
+//mostrar pais por id (codigo de 3 letras)
+router.get('/:idCountry', (req, res) => {
+    let idCountry = req.params.idCountry
+    if (idCountry) {
+        //idCountry no es afectado por minusculas
+        idCountry = idCountry.toUpperCase();
+        Country.findOne({
+            where: {
+                id3: idCountry
+            },
+            include: [
+                {
+                    model: Activities,
+                }
+            ],
+        })
+            .then((idCountry) => {
+                res.status(200).json(idCountry);
+            })
+            .catch((err) => {
+                return res.status(400).send({ data: err });
+            })
+    }
+})
 
-//     let countries;
-//     const countriesdb = await Country.count();
-
-//     countries = countriesdb === 0 ? await apiRresult() : awaitdb()
-
-//     if (name) {
-//         const countryname = countries.filter(n => n.name.toLowerCase().includes(name.toLowerCase()))
-
-//         countryname.length ? res.send(countryname) : res.send("No se encontro ningun pais");
-
-//     } else {
-//         res.send(countries)
-//     }
-
-// });
-
-// server.get('/:id', async (req, res, next) => {
-//     const { id } = req.params;
-//     const country = await db();
-
-//     try {
-//         if (id) {
-//             const idcountry = country.filter(i => i.id3.toLowerCase() == id.toLowerCase())
-//             res.send(idcountry)
-//         }
-        
-//     } catch (error) {
-//         res.send("Id no valido")
-//     }
-// })
-
-// module.exports = server
-
+module.exports = router;
