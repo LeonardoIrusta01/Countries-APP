@@ -2,7 +2,16 @@ const { Router } = require('express')
 const router = Router();
 const { Country, Activities } = require('../db')
 
-//Ruta de Post para la actividad
+// Ruta para traernos las actividades
+router.get('/activities',async(req,res)=>{
+    let all_activities = await Activities.findAll();
+    let {count, row} = await Activities.findAndCountAll();
+    console.log(count)
+    res.send(all_activities);
+})
+
+
+// Ruta de Post para la actividad
 router.post('/activity', async (req, res) => {
     let { name, difficulty, season, pais } = req.body;
     let actividad = await Activities.create({
