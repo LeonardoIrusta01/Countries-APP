@@ -15,9 +15,9 @@ export function getCountries() {
 export function getCountry(name) {
     return (dispatch) => {
         return fetch(`${URL}/countries?name=${name}`).then(info => info.json())
-            .then(json => {
-                dispatch({ type: "GET_COUNTRY", payload: json })
-            })
+        .then(json => {
+            dispatch({ type: "GET_COUNTRY", payload: json })
+        })
     }
 }
 

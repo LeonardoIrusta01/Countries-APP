@@ -18,7 +18,7 @@ export default function rootReducer(state = initialState, action) {
             }
         }
         // Nos traemos una country por su name.
-        case "GET_COUNTRY": {
+        case "GET_COUNTRY":{
             return {
                 ...state,
                 countries: action.payload

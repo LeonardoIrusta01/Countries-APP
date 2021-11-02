@@ -16,7 +16,7 @@ export function Countries(props) {
 
     useEffect(() => {
         props.getCountries()
-    },)
+    }, [])
 
     // Aplicamos unas condiciones para utilizar bien nuestro paginado.
     if (numPage < 1) {
