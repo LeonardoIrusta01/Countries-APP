@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import logo from '../../Pictur'
 import './Navbar.css';
 import Search from '../Search/Search.jsx';
+import Order from "../Order/Order.jsx";
 
 function Nav() {
     return (
@@ -18,6 +19,7 @@ function Nav() {
                 </nav>
                 <hr />
                 <div id="NavBar">
+                    <Order />
                     <Search />
                 </div>
             </div>

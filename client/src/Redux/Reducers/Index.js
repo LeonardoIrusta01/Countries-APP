@@ -18,7 +18,7 @@ export default function rootReducer(state = initialState, action) {
             }
         }
         // Nos traemos una country por su name.
-        case "GET_COUNTRY":{
+        case "GET_COUNTRY": {
             return {
                 ...state,
                 countries: action.payload
@@ -33,7 +33,7 @@ export default function rootReducer(state = initialState, action) {
                 country_Detail: action.payload
             }
         }
-        
+
         // Nos traeremos todas las actividades.
         case "GET_ACTIVITIES": {
             return {
@@ -44,11 +44,26 @@ export default function rootReducer(state = initialState, action) {
 
         // Creamos una actividad.
         case "POST_ACTIVITY":
-            return{
+            return {
                 ...state,
                 country_id3Code: action.payload
             }
+        
+        // Ordenamos por nombre
+        case "ORDER_ABC": {
+            return {
+                ...state,
+                countries: action.payload
+            }
+        }
 
+        // Ordenamos por poblacion
+        case "ORDER_POPULATION": {
+            return {
+                ...state,
+                countries: action.payload
+            }
+        }
 
         default:
             return state;
