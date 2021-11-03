@@ -2,6 +2,7 @@ import rootReducer from '../Reducers/Index';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+// Creamos nuestra Store.
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const store = createStore(rootReducer, composeEnhancers(

@@ -5,7 +5,7 @@ const { Country, Activities } = require('../db')
 const axios = require('axios')
 
 
-//Carga Por hook
+//Carga Por hook, donde se cargara automaticamente cuando se inicie la aplicacion. 
 router.use(async (req, res, next) => {
     const countries = await Country.count();
     if (!countries) {
@@ -18,6 +18,7 @@ router.use(async (req, res, next) => {
             flags: country.flags.svg,
             continents: country.continents[0],
             capital: country.capital?.length ? country.capital[0] : "No se encontro la capital",
+            region: country.region,
             subregion: country.subregion ? country.subregion : "No se encontro la subregion",
             area: country.area,
             population: country.population,
@@ -43,15 +44,31 @@ router.get('/', async (req, res) => {
             },
             include: { model: Activities, require: false }
         });
-        return res.json(countries);
+        return countries ? res.json(countries) : res.sendStatus(404);
     }
-    
+    //Por continente
+    let { region } = req.query;
+    if (region) {
+        region = region.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+        let countries2 = await Country.findAll({
+            where: {
+                region: {
+                    //comparo ,y like busca por caracter ingresado.
+                    [Op.like]: `%${region}%`,
+                },
+            },
+            include: { model: Activities, required: false },
+        });
+        return countries2 ? res.json(countries2) : res.sendStatus(404);
+    }
+
     // Todos los paises 
     else {
         let countries = await Country.findAll({
             attributes: ["id3", "name", "flags", "population", "subregion"],
             include: { model: Activities, required: false }
         });
+        // console.log("Todas esas weas",countries)
         return res.json(countries)
     }
 });

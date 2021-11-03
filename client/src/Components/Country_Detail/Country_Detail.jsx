@@ -7,8 +7,8 @@ import './Country_Detail.css';
 function Detail_country(props) {
 
     useEffect(() => {
-        const id3Code = props.match.params.id3Code;
-        props.getCountryDetail(id3Code)
+        const id3 = props.match.params.id3;
+        props.getCountryDetail(id3)
     }, [])
 
     return (
@@ -65,7 +65,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        getCountryDetail: (id3Code) => dispatch(getCountryDetail(id3Code))
+        getCountryDetail: (id3) => dispatch(getCountryDetail(id3))
     }
 }
 

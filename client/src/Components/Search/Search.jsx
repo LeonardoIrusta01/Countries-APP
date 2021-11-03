@@ -22,6 +22,7 @@ export function Search(props) {
         }
         else if (!input.name) {
             alert("Nombre invalido")
+            console.log("Introduzca un nombre correcto")
         }
     }
 

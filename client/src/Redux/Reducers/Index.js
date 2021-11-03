@@ -48,7 +48,7 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 country_id3Code: action.payload
             }
-        
+
         // Ordenamos por nombre
         case "ORDER_ABC": {
             return {
@@ -59,6 +59,20 @@ export default function rootReducer(state = initialState, action) {
 
         // Ordenamos por poblacion
         case "ORDER_POPULATION": {
+            return {
+                ...state,
+                countries: action.payload
+            }
+        }
+
+        // Filtramos por Subregion
+        case "FILTER_SUBREG": {
+            return {
+                ...state,
+                countries: action.payload
+            }
+        }
+        case "CHANGE_COUNTRIES": {
             return {
                 ...state,
                 countries: action.payload

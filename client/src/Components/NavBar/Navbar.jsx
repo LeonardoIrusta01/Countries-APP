@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Search from '../Search/Search.jsx';
 import Order from "../Order/Order.jsx";
+import Filter from "../Filter/Filter";
 
 function Nav() {
     return (
@@ -11,7 +12,7 @@ function Nav() {
             <div id="estiloNav">
                 <nav id="Content_Nav">
                     <Link to={'/home'}>
-                        
+                        <h1>Home</h1>
                     </Link>
                     <Link to={'/activity'}>
                         <h2>Crear Actividad</h2>
@@ -20,6 +21,7 @@ function Nav() {
                 <hr />
                 <div id="NavBar">
                     <Order />
+                    <Filter />
                     <Search />
                 </div>
             </div>

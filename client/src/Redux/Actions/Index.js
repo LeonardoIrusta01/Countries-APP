@@ -10,7 +10,7 @@ export function getCountries() {
     return (dispatch) => {
         return fetch(`${URL}/countries`).then(info => info.json())
             .then(json => {
-                dispatch({ type: "GET_COUNTRIES", payload: json })  
+                dispatch({ type: "GET_COUNTRIES", payload: json })
             })
     }
 }
@@ -19,9 +19,9 @@ export function getCountries() {
 export function getCountry(name) {
     return (dispatch) => {
         return fetch(`${URL}/countries?name=${name}`).then(info => info.json())
-        .then(json => {
-            dispatch({ type: "GET_COUNTRY", payload: json })
-        })
+            .then(json => {
+                dispatch({ type: "GET_COUNTRY", payload: json })
+            })
     }
 }
 
@@ -47,7 +47,7 @@ export function getActivities() {
 }
 
 // Action donde crearemos una actividad.
-export function postActivity(data){ 
+export function postActivity(data) {
     return (dispatch) => {
         return axios.post(`${URL}/activity`, data)      // La data en enviada por body a nuestro back.
             .then(response => {
@@ -69,12 +69,13 @@ export function order_abc(orden, oCountries) {
         var nombreB = b.name.toUpperCase()
 
         if (orden === ASD) {
-            return nombreA < nombreB ? -1: nombreA > nombreB ? 1 : 0;
+            return nombreA < nombreB ? -1 : nombreA > nombreB ? 1 : 0;
         }
         if (orden === DES) {
-            return nombreA > nombreB ? -1: nombreA < nombreB ? 1 : 0;
+            return nombreA > nombreB ? -1 : nombreA < nombreB ? 1 : 0;
         }
     })
+    console.log("ESTOY EN ORDER_ABC", countries)
     return function (dispatch) {
         dispatch({ type: "ORDER_ABC", payload: countries })
     }
@@ -92,13 +93,33 @@ export function order_population(orden, oPopulation) {
 
 
         if (orden === HASD) {
-            return poblacionA < poblacionB ? -1: poblacionA > poblacionB ? 1 : 0;
+            return poblacionA < poblacionB ? -1 : poblacionA > poblacionB ? 1 : 0;
         }
         if (orden === HDES) {
-            return poblacionA > poblacionB ? -1: poblacionA < poblacionB ? 1 : 0;
+            return poblacionA > poblacionB ? -1 : poblacionA < poblacionB ? 1 : 0;
         }
     })
-    return function (dispatch){
-        dispatch({type:"ORDER_POPULATION", payload: population})
+    console.log("ESTOY EN ORDER_P", population)
+    return function (dispatch) {
+        dispatch({ type: "ORDER_POPULATION", payload: population })
+    }
+}
+
+// Action para filtrar por subregion
+export function filtro_reg(subregion) {
+    return (dispatch) => {
+        return fetch(`${URL}/countries?region=${subregion}`).then(info => info.json())
+            .then(json => {
+                dispatch({ type: "GET_COUNTRY", payload: json })
+            })
+    }
+}
+
+export function changeCountries(name) {
+    return function (dispatch) {
+        return fetch(`${URL}/activities?name=${name}`).then(response => response.json())
+            .then(json => {
+                dispatch({ type: "CHANGE_COUNTRIES", payload: json })
+            })
     }
 }
