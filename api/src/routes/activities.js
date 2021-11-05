@@ -4,6 +4,8 @@ const { Country, Activities } = require('../db')
 
 // Ruta para traernos las actividades
 router.get('/activities',async(req,res)=>{
+
+    // Si me pasan un name por query, realizo una busqueda de esa actividad en los paieses que se encuntre.
     let { name } = req.query;
     if(name){
         // console.log(name)
@@ -12,7 +14,7 @@ router.get('/activities',async(req,res)=>{
             include:{
                 model:Activities,
                 where:{
-                    name_a:name
+                    name:name
                 },
                 require:true
             }
@@ -20,6 +22,8 @@ router.get('/activities',async(req,res)=>{
         // console.log(country_with_activity)
         return country_with_activity ? res.json(country_with_activity) : res.sendStatus(404);
     }
+    
+    // Si no me pasan un name, directamente me traigo todas las actividades de mi DB.
     let all_activities = await Activities.findAll();
     let {count, row} = await Activities.findAndCountAll();
     console.log(count)
@@ -32,6 +36,7 @@ router.post('/activity', async (req, res) => {
     let { name, difficulty, season, pais } = req.body;
     let actividad = await Activities.create({
         name: name,
+        duration: duration,
         difficulty: difficulty,
         season: season,
     })

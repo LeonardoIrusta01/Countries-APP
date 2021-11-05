@@ -33,7 +33,7 @@ export function Countries(props) {
         <div>
             <div id='cont'>
                 {countries ? countries.map(country =>
-                    <div>
+                    <div className="cards">
                         <Country
                             id3={country.id3}
                             name={country.name}

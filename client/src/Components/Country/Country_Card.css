@@ -1,0 +1,27 @@
+#flag{
+    margin-top: 10px;
+      max-width: 10rem;
+      max-height: 6rem;
+  }
+  
+  .card{
+    width: 20rem ;
+    height: 20rem;
+    background:coral;
+    border-radius: 25px;
+    box-shadow: 10px 10px 1px rgba(0, 0, 0, 0.404);
+    margin: 16px;
+
+  }
+
+  .linkImage {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  #text_cards{
+    font-size: small;
+  }

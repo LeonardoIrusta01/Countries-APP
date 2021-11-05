@@ -30,8 +30,8 @@ export function Search(props) {
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div className="bar">
-                    <input
+                <div >
+                    <input  className="selector"
                         type="text"
                         placeholder="Buscar..."
                         name="name"

@@ -4,7 +4,7 @@ const initialState = {
     activities: [],
     country_Name: [],
     country_Detail: {},
-    country_id3Code: [],
+    country_id3: [],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -46,7 +46,7 @@ export default function rootReducer(state = initialState, action) {
         case "POST_ACTIVITY":
             return {
                 ...state,
-                country_id3Code: action.payload
+                country_id3: action.payload
             }
 
         // Ordenamos por nombre

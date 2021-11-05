@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3a37dff3.chunk.css",
+    "main.js": "/static/js/main.1e3858c3.chunk.js",
+    "main.js.map": "/static/js/main.1e3858c3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6f2a3cee.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6f2a3cee.js.map",
+    "static/js/2.1a547a6b.chunk.js": "/static/js/2.1a547a6b.chunk.js",
+    "static/js/2.1a547a6b.chunk.js.map": "/static/js/2.1a547a6b.chunk.js.map",
+    "static/js/3.71494186.chunk.js": "/static/js/3.71494186.chunk.js",
+    "static/js/3.71494186.chunk.js.map": "/static/js/3.71494186.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.3a37dff3.chunk.css.map": "/static/css/main.3a37dff3.chunk.css.map",
+    "static/js/2.1a547a6b.chunk.js.LICENSE.txt": "/static/js/2.1a547a6b.chunk.js.LICENSE.txt",
+    "static/media/Landing.css": "/static/media/World-Map-design_2560x1600.6c0e1565.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6f2a3cee.js",
+    "static/js/2.1a547a6b.chunk.js",
+    "static/css/main.3a37dff3.chunk.css",
+    "static/js/main.1e3858c3.chunk.js"
+  ]
+}

@@ -1,0 +1,38 @@
+body{
+    background-image: url('../../Pictur/World-Map-design_2560x1600.jpg');
+    height: 100vh;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    top: 0px;
+    background-size: cover;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+}
+
+.Count_Landing {
+    height: 100%;
+    text-decoration: underline;
+    color: white;
+    border-radius: 3rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    opacity: .5;
+}
+
+#Landing {
+    border-radius: 20px;
+    border: 2px solid rgb(253, 253, 253);
+    background-color: transparent;
+    padding: 0px 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}

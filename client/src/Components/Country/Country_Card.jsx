@@ -6,7 +6,7 @@ import './Country_Card.css';
 export function Country_Card(props) {
     return (
         <div class='card'>
-            <Link to={`/home/country_detail/${props.id3}`}>
+            <Link className="linkImage" to={`/home/country_detail/${props.id3}`}>
                 <div id='con_flag'>
                     <img id='flag' src={props.flags} alt={`la bandera de ${props.name} no se encuentra :(`} />
                 </div>

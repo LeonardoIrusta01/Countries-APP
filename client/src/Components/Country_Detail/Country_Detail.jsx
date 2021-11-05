@@ -43,6 +43,9 @@ function Detail_country(props) {
                                 Activity: {c.name}
                             </div>
                             <div>
+                                Duration: {c.duration}
+                            </div>
+                            <div>
                                 Difficulty: {c.difficulty}
                             </div>
                             <div>
