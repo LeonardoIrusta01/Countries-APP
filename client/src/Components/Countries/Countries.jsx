@@ -42,7 +42,7 @@ export function Countries(props) {
                     </div>) : (<p>Pais No Encontrado</p>)}
 
             </div>
-            <div id='pag'>
+            <div className='pag'>
                 <button onClick={() => setNumPage(numPage - 1)}>◀</button>
                 <h3>{numPage}</h3>
                 <button onClick={() => setNumPage(numPage + 1)}>▶</button>

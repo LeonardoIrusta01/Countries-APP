@@ -12,18 +12,20 @@ function Detail_country(props) {
     }, [])
 
     return (
-        <div id='detalles'>
-            <div>
+        <div className='detail_table'>
+            <div className="back">
+            </div>
+            <div >
                 <Nav />
             </div>
-            <div id="datos_c">
-                <div id='flag'>
+            <div className="datos_c">
+                <div className='flag'>
                     <img src={props.country_Detail.flags} alt={props.country_Detail.name} />
                 </div>
-                <div id='informacion'>
-                    <h1>{props.country_Detail.name}</h1>
-                    <h2>{props.country_Detail.continent}</h2>
-                    <h3>Id: {props.country_Detail.id3}</h3>
+                <div className='information'>
+                    <h4>Country: {props.country_Detail.name}</h4>
+                    <h4>Region: {props.country_Detail.region}</h4>
+                    <h4>ID: {props.country_Detail.id3}</h4>
                     <p>Capital: {props.country_Detail.capital}</p>
                     <p>Subregión: {props.country_Detail.subregion}</p>
                     <p>Area: {props.country_Detail.area} km2 </p>
@@ -31,14 +33,14 @@ function Detail_country(props) {
                 </div>
 
             </div>
-            
-            <div id="actividades_c">
+
+            <div className="activities">
                 <hr />
                 <h1>Activities</h1>
                 <p >{props.country_Detail.activities && props.country_Detail.activities.map(c =>
                     <div>
                         <hr />
-                        <div id="Activity">
+                        <div className="infActiv">
                             <div>
                                 Activity: {c.name}
                             </div>

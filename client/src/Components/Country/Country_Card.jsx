@@ -11,9 +11,9 @@ export function Country_Card(props) {
                     <img id='flag' src={props.flags} alt={`la bandera de ${props.name} no se encuentra :(`} />
                 </div>
                 <div>
-                    <div id='text_cards'>
-                        <h1>{props.name}</h1>
-                        <h1>{props.subregion}</h1>
+                    <div className='text_cards'>
+                        <h2>{props.name}</h2>
+                        <h3>{props.subregion}</h3>
                     </div>
                 </div>
             </Link>

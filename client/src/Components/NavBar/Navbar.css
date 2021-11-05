@@ -11,9 +11,8 @@
 .Activity{
     color: white;
     display: flex;
-    text-decoration: none; 
+    text-decoration: none;
 }
-
 
 #Create_act{
     margin-top: 2rem;
@@ -36,7 +35,7 @@
 }
 
 .selector{
-    border-radius: 16px;
+    border-radius: 10px;
     padding: 4px;
     background-color: coral;
 }

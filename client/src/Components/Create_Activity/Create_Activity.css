@@ -1,0 +1,12 @@
+.datos{
+    width: 50%;
+
+    background-color: yellow;
+}
+
+.form_of_charge{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    background-color: yellow;
+}

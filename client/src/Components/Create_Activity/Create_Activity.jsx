@@ -76,12 +76,12 @@ const Create_Activity = () => {
             <div id='Nav_in_form'>
                 <Nav/>
             </div>
-            <div id='form_of_charge'>
+            <div className='form_of_charge'>
                 <form onSubmit={handleSubmit}>
                     <div id='title'>
-                        <h1>Load your activity</h1>
+                        <h2>Load your activity</h2>
                     </div>
-                    <div id='datos'>
+                    <div className='datos'>
                         <div>
                             <label htmlFor="">Name:</label>
                             <input type="text" name="name" onChange={handleInputChange} required />

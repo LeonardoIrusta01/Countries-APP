@@ -1,0 +1,59 @@
+.detail_table {
+    vertical-align: baseline;
+    align-items: center;
+    color: white;
+}
+
+.datos_c {
+    margin-top: 2rem;
+    height: 22rem;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-around;
+}
+
+.back {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+img {
+    width: 40rem;
+    height: 20rem;
+}
+
+.information,
+h4 {
+
+}
+
+.information,
+p {
+    color: white;
+}
+
+.activities {
+    margin-top: 2rem;
+}
+
+.activities h1 {
+    color: white;
+}
+
+.infActiv {
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width:800px) {
+    .datos_c {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

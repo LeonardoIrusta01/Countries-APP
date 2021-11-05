@@ -39,11 +39,14 @@ function Nav(props) {
         <div>
             <div>
                 <nav className="Content_nav">
+                    <Link className="Activity api" to={'/'}>
+                        <h2> Countries APP </h2>
+                    </Link>
                     <Link className="Activity Home" to={'/home'}>
-                        <h1 >Home</h1>
+                        <h2> Home </h2>
                     </Link>
                     <Link className="Activity" to={'/activity'}>
-                        <h2 >Crear Actividad </h2>
+                        <h2> Add Activity </h2>
                     </Link>
                 </nav>
                 <hr />
