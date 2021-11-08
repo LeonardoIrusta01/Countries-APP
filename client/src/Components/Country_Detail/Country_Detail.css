@@ -26,10 +26,6 @@ img {
     height: 20rem;
 }
 
-.information,
-h4 {
-
-}
 
 .information,
 p {
@@ -44,10 +40,16 @@ p {
     color: white;
 }
 
+.ajustes{
+    display: flex;
+    justify-content: space-between;
+}
+
 .infActiv {
     color: white;
     display: flex;
     flex-direction: column;
+    font-weight: 600; 
 }
 
 @media (max-width:800px) {

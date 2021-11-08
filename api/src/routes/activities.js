@@ -33,7 +33,7 @@ router.get('/activities',async(req,res)=>{
 
 // Ruta de Post para la actividad
 router.post('/activity', async (req, res) => {
-    let { name, difficulty, season, pais } = req.body;
+    let { name, difficulty, duration, season, pais } = req.body;
     let actividad = await Activities.create({
         name: name,
         duration: duration,

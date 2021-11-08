@@ -36,7 +36,7 @@ function Detail_country(props) {
 
             <div className="activities">
                 <hr />
-                <h1>Activities</h1>
+                <h2>Activities</h2>
                 <p >{props.country_Detail.activities && props.country_Detail.activities.map(c =>
                     <div>
                         <hr />
