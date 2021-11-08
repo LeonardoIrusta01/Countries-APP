@@ -42,7 +42,7 @@ function Detail_country(props) {
                         <hr />
                         <div className="infActiv">
                             <div>
-                                Activity: {c.name}
+                                Name of the Activity: {c.name}
                             </div>
                             <div>
                                 Duration: {c.duration}

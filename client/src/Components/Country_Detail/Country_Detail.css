@@ -47,9 +47,12 @@ p {
 
 .infActiv {
     color: white;
+    margin-top: 2rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
-    font-weight: 600; 
+    color: white;
+    justify-content: space-around;
 }
 
 @media (max-width:800px) {
