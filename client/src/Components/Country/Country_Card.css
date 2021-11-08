@@ -22,13 +22,13 @@
   text-decoration: none;
 }
 
-.text_cards,
+.text_cards 
 h2 {
   color: white;
   font-size: 2rem;
 }
 
-.text_cards,
+.text_cards 
 h3 {
   color: rgba(255, 255, 255, 0.513);
   font-size: 1.5rem;

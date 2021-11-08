@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useDispatch,  } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { postActivity, getCountries } from '../../Redux/Actions/Index';
 import Nav from '../NavBar/Navbar.jsx';
 import './Create_Activity.css';
@@ -73,29 +73,27 @@ const Create_Activity = () => {
 
     return (
         <div>
+            <div className="back">
+            </div>
             <div id='Nav_in_form'>
-                <Nav/>
+                <Nav />
             </div>
             <div className='form_of_charge'>
-                <form onSubmit={handleSubmit}>
-                    <div id='title'>
-                        <h2>Load your activity</h2>
+                <form className='Form' onSubmit={handleSubmit} >
+                    <div >
+                        <h2 className='title'>Load your activity</h2>
                     </div>
                     <div className='datos'>
-                        <div>
-                            <label htmlFor="">Name:</label>
+                        <div className='imput'>
+                            <label className='label' htmlFor="">Name:</label>
                             <input type="text" name="name" onChange={handleInputChange} required />
                         </div>
-                        <div>
-                            <label htmlFor="">Duration:</label>
+                        <div className='imput'>
+                            <label className='label' htmlFor="">Duration:</label>
                             <input type="text" name="duration" onChange={handleInputChange} required />
                         </div>
-                        <div>
-                            <label htmlFor="">Difficulty:</label>
-                            <input type='number' min='1' max='5' name='difficulty' onChange={handleInputChange} required />
-                        </div>
-                        <div>
-                            <label htmlFor="">Season:</label>
+                        <div className='imput'>
+                            <label className='label' htmlFor="">Season:</label>
                             <select name='season' onChange={handleInputChange} required>
                                 <option ></option>
                                 <option value="Verano">Verano(summer)</option>
@@ -104,15 +102,19 @@ const Create_Activity = () => {
                                 <option value="Primavera">Spring(primavera)</option>
                             </select>
                         </div>
-                        <div>
-                            <label htmlFor="">Countries: </label>
+                        <div className='imput'>
+                            <label className='label' htmlFor="">Difficulty:</label>
+                            <input type='number' min='1' max='5' name='difficulty' onChange={handleInputChange} required />
+                        </div>
+                        <div className='cuadrado'>
+                            <label className='label' htmlFor="">Countries: </label>
                             <select id="countries_sel" multiple name="country" onChange={handleCountry} required >
                                 {city.length > 0 ? city.map((pais, i) => {
                                     return <option value={pais.id3} key={pais.id3}>{`${pais.id3}(${pais.name})`}</option>
                                 }) : <option>Cargando</option>}
                             </select>
                         </div>
-                        <input id='btn_Form' type='submit' value='Create Activity' />
+                        <input className='btn_Form' type='submit' value='Create Activity' />
                     </div>
                 </form>
             </div>
