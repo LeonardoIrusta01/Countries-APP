@@ -7,19 +7,29 @@ import './Create_Activity.css';
 
 const Create_Activity = () => {
     const dispatch = useDispatch();
-    // const id3Code = useSelector(state => state.id3Code)
-    // const countries = useSelector(state => state.countries)
+
+    // Seteo un estado para manejar los datos que se mostraran en nuestro scroll de paises.
     const [city, setCity] = useState([])
-    const [pais, setPais] = useState([])
+    
+    // Seteo un estado para un mejor manejo de seleccion de pais en nuestro formulario.
     const [paises, setPaises] = useState([])
+    
+    // Seteo un estado donde almanenaremos nuestros paises seleccionados.
+    const [pais, setPais] = useState([])
+
+    // Seteo un uso de banderas para manejar mejor nuestra informacion.
     const [loading, setLoading] = useState(true)
     const [load, setLoad] = useState(true)
+
+    // Nuestro estado para los datos de nuestro formulario.
     const [form, setForm] = useState({
         name: '',
         duration: '',
         difficulty: '',
         season: '',
     })
+
+    // Creamos una funcion que nos permita 
     const Filt = (array_countries) => {
         setPaises([]);
         let filteredCountries_ = array_countries;
@@ -27,6 +37,7 @@ const Create_Activity = () => {
         setPaises(filteredCountries_)
     }
 
+    // Funcion que nos permitira caputar el evento que se este realizando de nuestro input.
     const handleInputChange = (event) => {
         setForm({
             ...form,
@@ -34,15 +45,16 @@ const Create_Activity = () => {
         })
     }
 
+    // Funcion que nos permitira camputar el pais seleccionado en nuestro scroll.
     const handleCountry = (event) => {
         event.preventDefault();
         const options = event.target.options;
-        // console.log(options)
         const selections = [];
         for (let i = 0; i < options.length; i++) options[i].selected && selections.push(options[i].value);
         setPais(selections)
     }
 
+    // Funcion que nos permitira mandar el post creado a nuestra DB.
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(postActivity(Object.assign(form, { pais: pais })))
@@ -59,6 +71,7 @@ const Create_Activity = () => {
         }, 1500)
     }, [load])
 
+
     useEffect(() => {
         const fetch_Data = async () => {
             setLoading(true);
@@ -71,6 +84,7 @@ const Create_Activity = () => {
         fetch_Data();
     }, []);
 
+    // Renderizamos nuestro Formulario Controlodo.
     return (
         <div>
             <div className="back">
@@ -88,10 +102,12 @@ const Create_Activity = () => {
                             <label className='label' htmlFor="">Name:</label>
                             <input type="text" name="name" onChange={handleInputChange} required />
                         </div>
+
                         <div className='imput'>
                             <label className='label' htmlFor="">Duration:</label>
-                            <input type="text" name="duration" onChange={handleInputChange} required />
+                            <input type="text" name="duration" placeholder="horas, dias, meses" onChange={handleInputChange} required />
                         </div>
+
                         <div className='imput'>
                             <label className='label' htmlFor="">Season:</label>
                             <select name='season' onChange={handleInputChange} required>
@@ -102,10 +118,12 @@ const Create_Activity = () => {
                                 <option value="Primavera">Spring(primavera)</option>
                             </select>
                         </div>
+
                         <div className='imput'>
                             <label className='label' htmlFor="">Difficulty:</label>
                             <input type='number' min='1' max='5' name='difficulty' onChange={handleInputChange} required />
                         </div>
+
                         <div className='cuadrado'>
                             <label className='label' htmlFor="">Countries: </label>
                             <select id="countries_sel" multiple name="country" onChange={handleCountry} required >

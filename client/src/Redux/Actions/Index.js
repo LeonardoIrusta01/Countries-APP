@@ -49,16 +49,17 @@ export function getActivities() {
 // Action donde crearemos una actividad.
 export function postActivity(data) {
     return (dispatch) => {
-        return axios.post(`${URL}/activity`, data)      // La data en enviada por body a nuestro back.
+        return axios.post(`${URL}/activity/${data.name}`, data)      // La data en enviada por body a nuestro back.
             .then(response => {
-                console.log(data)
-                console.log("response: ")
-                console.log(response)
-                console.log("Done!")
+                // console.log(data)
+                // console.log("response: ")
+                // console.log(response)
+                // console.log("Done!")
                 dispatch({ type: "POST_ACTIVITY", payload: response })
             })
     }
 }
+
 // Ordenamiento por nombres de countries.
 export function order_abc(orden, oCountries) {
     let countries = [...oCountries]
@@ -75,7 +76,8 @@ export function order_abc(orden, oCountries) {
             return nombreA > nombreB ? -1 : nombreA < nombreB ? 1 : 0;
         }
     })
-    console.log("ESTOY EN ORDER_ABC", countries)
+
+    // console.log("ESTOY EN ORDER_ABC", countries)
     return function (dispatch) {
         dispatch({ type: "ORDER_ABC", payload: countries })
     }
@@ -99,7 +101,7 @@ export function order_population(orden, oPopulation) {
             return poblacionA > poblacionB ? -1 : poblacionA < poblacionB ? 1 : 0;
         }
     })
-    console.log("ESTOY EN ORDER_P", population)
+    // console.log("ESTOY EN ORDER_P", population)
     return function (dispatch) {
         dispatch({ type: "ORDER_POPULATION", payload: population })
     }
@@ -115,6 +117,7 @@ export function filtro_reg(subregion) {
     }
 }
 
+// Action para buscar una actividad de mi DB
 export function changeCountries(name) {
     return function (dispatch) {
         return fetch(`${URL}/activities?name=${name}`).then(response => response.json())

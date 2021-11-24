@@ -24,16 +24,18 @@ function Nav(props) {
             props.order_population(event.target.value, props.countries)
         }
     }
-    useEffect(() => {
-        props.getActivities()
-    }, [])
-
+    
     function handleDispatchCont(event) {
         props.filtro_reg(event.target.value)
     }
+    
     function handleDispatchAct(event) {
         props.changeCountries(event.target.value)
     }
+    
+    useEffect(() => {
+        props.getActivities()
+    }, [])
 
     return (
         <div>

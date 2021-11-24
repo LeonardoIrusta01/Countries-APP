@@ -2,7 +2,6 @@
 const initialState = {
     countries: [],
     activities: [],
-    country_Name: [],
     country_Detail: {},
     country_id3: [],
 }
@@ -29,7 +28,6 @@ export default function rootReducer(state = initialState, action) {
         case "GET_COUNTRY_DETAIL": {
             return {
                 ...state,
-                country_Name: action.payload,
                 country_Detail: action.payload
             }
         }
